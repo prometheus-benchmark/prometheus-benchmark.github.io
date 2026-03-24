@@ -542,7 +542,23 @@ print(pad("total", name_w) .. "  " .. pad("", iter_w) .. "  " .. string.format("
                 "closure creation": 0.075,
                 "metatable index": 0.013
             }
-        }
+        },
+        {
+           
+            name: "Wynfuscate Unreleased",
+            logo: "resources/wynfuscate.png",
+            link: "https://wynfuscate.com",
+            totalTime: 1.399,
+            details: {
+                "arithmetic loop": 0.084,
+                "function calls": 0.589,
+                "table create/insert": 0.090,
+                "table iteration": 0.079,
+                "string concat": 0.258,
+                "closure creation": 0.123,
+                "metatable index": 0.173
+            }
+        },
     ];
 
     results.sort((a, b) => a.totalTime - b.totalTime);

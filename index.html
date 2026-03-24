@@ -559,6 +559,23 @@ print(pad("total", name_w) .. "  " .. pad("", iter_w) .. "  " .. string.format("
                 "metatable index": 0.173
             }
         },
+
+        {
+           
+            name: "Lucine Unreleased",
+            logo: "resources/lucine.png",
+            link: "https://discord.gg/rYxC3wAk",
+            totalTime: 1.287,
+            details: {
+                "arithmetic loop": 0.052,
+                "function calls": 0.135,
+                "table create/insert": 0.146,
+                "table iteration": 0.646,
+                "string concat": 0.196,
+                "closure creation": 0.083,
+                "metatable index": 0.026
+            }
+        },
     ];
 
     results.sort((a, b) => a.totalTime - b.totalTime);

@@ -476,7 +476,7 @@ print(pad("total", name_w) .. "  " .. pad("", iter_w) .. "  " .. string.format("
 
 <script>
   
-    const maxTimeRef = Math.max(...results.map(r => r.totalTime));
+   
 
     const results = [
         {
@@ -522,6 +522,8 @@ print(pad("total", name_w) .. "  " .. pad("", iter_w) .. "  " .. string.format("
     ];
 
     results.sort((a, b) => a.totalTime - b.totalTime);
+
+    const maxTimeRef = Math.max(...results.map(r => r.totalTime));
 
 
     const tableBody = document.getElementById('ranking-body');

@@ -592,6 +592,22 @@ print(pad("total", name_w) .. "  " .. pad("", iter_w) .. "  " .. string.format("
                 "metatable index": 0.001
             }
         },
+        {
+           
+            name: "Goofyscator V7.1 BETA",
+            logo: "resources/goofy.png",
+            link: "https://goofyscator.lua.cz",
+            totalTime: 0.677,
+            details: {
+                "arithmetic loop": 0.001,
+                "function calls": 0.005,
+                "table create/insert": 0.020,
+                "table iteration": 0.087,
+                "string concat": 0.340,
+                "closure creation": 0.010,
+                "metatable index": 0.212
+            }
+        },
     ];
 
     results.sort((a, b) => a.totalTime - b.totalTime);

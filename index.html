@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,17 +7,19 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Courier+Prime&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --bg-color: #000000;
-            --card-bg: #0a0a0a;
-            --text-color: #eeeeee;
-            --text-muted: #888888;
-            --border-color: #333333; 
-            --accent-color: #ffffff;
-            --bar-color: #444444;
+            --bg-color: #0d0d0d;
+            --paper: #161616;
+            --text-color: #ffffff;
+            --text-muted: #dbdbdb;
+            --border-color: #525252;
+            --border-light: #2b2822;
+            --accent: #e3dfcc;
+            --link-color: #6f98de;
+            --link-visited: #a291ff;
         }
 
         * {
@@ -25,7 +27,7 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Merriweather', Georgia, 'Times New Roman', serif;
             background-color: var(--bg-color);
             color: var(--text-color);
             margin: 0;
@@ -35,166 +37,185 @@
         }
 
         .container {
-            max-width: 950px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 50px 20px;
+            padding: 40px 20px 70px;
         }
 
         header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 40px;
+            border-bottom: 3px double var(--border-color);
+            padding-bottom: 25px;
         }
 
         h1 {
-            font-size: 3em;
-            font-weight: 700;
-            margin-bottom: 10px;
-            letter-spacing: -1px;
+            font-size: 2.7em;
+            font-weight: 400;
+            margin: 0 0 8px;
+            color: var(--accent);
+            letter-spacing: 1px;
         }
 
         .subtitle {
             color: var(--text-muted);
-            font-size: 1em;
-            font-weight: 400;
+            font-size: 0.95em;
+        }
+
+        h2, h3 {
+            font-family: 'Merriweather', Georgia, serif;
+            font-weight: 700;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 6px;
+            color: var(--text-color);
         }
 
         /* Table Styles */
-        .ranking-container {
+        table.ranking-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--paper);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
-            overflow: hidden;
-            background-color: var(--card-bg);
         }
 
-        .ranking-header {
-            display: grid;
-            grid-template-columns: 50px 1fr 160px 80px;
-            padding: 15px 25px;
-            border-bottom: 1px solid var(--border-color);
+        table.ranking-table caption {
+            caption-side: top;
+            text-align: left;
+            font-size: 0.8em;
             color: var(--text-muted);
+            padding-bottom: 6px;
+            font-family: 'Courier Prime', monospace;
+        }
+
+        table.ranking-table th {
+            text-align: left;
+            padding: 10px 14px;
+            border-bottom: 2px solid var(--border-color);
+            border-top: 2px solid var(--border-color);
             font-size: 0.85em;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            font-weight: 600;
+            background-color: #1e1c17;
+            color: var(--text-muted);
         }
 
-        .ranking-row {
-            display: grid;
-            grid-template-columns: 50px 1fr 160px 80px;
-            align-items: center;
-            padding: 25px;
-            border-bottom: 1px solid var(--border-color); 
-            transition: background 0.2s;
+        table.ranking-table td {
+            padding: 12px 14px;
+            border-bottom: 1px solid var(--border-light);
+            vertical-align: middle;
         }
 
-        .ranking-row:last-child {
-            border-bottom: none;
+        table.ranking-table tbody tr.ranking-row:hover {
+            background-color: #1c1a15;
         }
-
-        .ranking-row:hover {
-            background-color: #111111;
-        }
-
 
         .rank {
-            font-family: 'Inter', sans-serif;
-            font-weight: 700;
-            font-size: 1.2em;
-            color: #555;
+            font-weight: 300;
+            font-family: 'Courier Prime', monospace;
+            width: 30px;
+            color: var(--text-muted);
         }
-        
-   
-        .rank-1 { color: #d4af37; text-shadow: 0 0 10px rgba(212, 175, 55, 0.2); }
-        .rank-2 { color: #c0c0c0; }
-        .rank-3 { color: #cd7f32; }
 
         .obf-info {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 10px;
         }
 
         .obf-logo {
-            width: 36px;
-            height: 36px;
-            border-radius: 8px;
+            width: 45px;
+            height: 45px;
             object-fit: cover;
             background-color: #222;
+            /*border: 1px solid var(--border-color);*/
+        }
+
+        .obf-logo-fallback {
+            width: 45px;
+            height: 45px;
+            /*border: 1px solid var(--border-color);*/
+            background-color: #201e18;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Courier Prime', monospace;
+            font-weight: 100;
+            font-size: 2em;
+            flex-shrink: 0;
         }
 
         .obf-name {
-            font-weight: 600;
-            color: var(--accent-color);
-            text-decoration: none;
-            font-size: 1.1em;
-            letter-spacing: -0.2px;
+            font-weight: 700;
+            color: var(--link-color);
+            text-decoration: underline;
+            font-size: 1.3em;
+        }
+        .obf-name:visited {
+            color: var(--link-visited);
         }
         .obf-name:hover {
-            text-decoration: underline;
-        }
-
-
-        .time-container {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
+            color: var(--accent);
         }
 
         .time-value {
-            font-family: 'Roboto Mono', monospace;
-            font-size: 1.2em;
-            font-weight: 500;
-            color: #fff; 
+            font-family: 'Courier Prime', monospace;
+            font-size: 1.3em;
+            font-weight: 100;
+            color: var(--text-color);
         }
 
         .perf-bar-container {
             width: 100%;
-            height: 6px;
-            background-color: #1a1a1a;
-            border-radius: 3px;
-            overflow: hidden;
+            height: 10px;
+            background-color: #201e18;
+            border: 1px solid var(--border-color);
+            margin-top: 4px;
         }
 
         .perf-bar {
             height: 100%;
-            background-color: var(--text-muted); 
-            border-radius: 3px;
+            background-image: repeating-linear-gradient(
+                45deg,
+                #6b6455,
+                #6b6455 4px,
+                #4a4638 4px,
+                #4a4638 8px
+            );
         }
 
-
         .expand-btn {
-            background: none;
+            background: var(--paper);
             border: 1px solid var(--border-color);
-            color: var(--text-muted);
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
+            color: var(--text-color);
+            width: 32px;
+            height: 32px;
             cursor: pointer;
-            font-size: 1.4em;
+            font-size: 1.1em;
+            font-family: 'Courier Prime', monospace;
+            font-weight: 700;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.2s;
-            margin-left: auto; 
         }
         .expand-btn:hover {
-            background-color: #222;
-            color: #fff;
-            border-color: #555;
+            background-color: var(--accent);
+            color: #1a1a1a;
+            border-color: var(--accent);
         }
-        .expand-btn.active {
-            transform: rotate(45deg);
-            color: #fff;
-            border-color: #fff;
+
+        .details-row td {
+            padding: 0;
+            border-bottom: 1px solid var(--border-light);
         }
 
         .details-panel {
             display: none;
-            background-color: #050505;
-            border-top: 1px solid #222;
-            padding: 25px;
-            font-family: 'Roboto Mono', monospace;
-            font-size: 0.9em;
+            background-color: #121110;
+            padding: 18px 20px;
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.85em;
+            border-top: 1px dashed var(--border-color);
         }
         .details-panel.active {
             display: block;
@@ -203,87 +224,88 @@
         .detail-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px 40px;
+            gap: 6px 40px;
         }
-        
+
         .detail-item {
             display: flex;
             justify-content: space-between;
-            padding-bottom: 8px;
-            border-bottom: 1px solid #111;
-            color: #aaa;
+            padding: 4px 0;
+            border-bottom: 1px dotted #3a362d;
+        }
+        .detail-item span:first-child {
+            color: var(--text-muted);
         }
         .detail-item span:last-child {
-            color: #fff;
-            font-weight: 500;
-        }
-        
-        .no-details {
-            color: #555;
-            font-style: italic;
-            font-family: 'Inter', sans-serif;
+            color: var(--accent);
+            font-weight: 200;
         }
 
+        .no-details {
+            color: #777;
+            font-style: italic;
+            font-family: 'Merriweather', Georgia, serif;
+        }
 
         footer {
-            margin-top: 80px;
-            border-top: 1px solid var(--border-color);
-            padding-top: 40px;
+            margin-top: 60px;
         }
 
         .discord-card {
-            background: #0a0a0a;
-            border: 1px solid #333;
-            padding: 25px;
-            border-radius: 12px;
+            background: #161513;
+            border: 1px solid var(--border-color);
+            padding: 20px;
             text-align: center;
             margin-bottom: 40px;
         }
 
+        .discord-card h3 {
+            border: none;
+            margin-top: 0;
+        }
+
         .discord-link {
             display: inline-block;
-            background-color: #5865F2;
-            color: white;
-            padding: 12px 30px;
-            border-radius: 8px;
+            background-color: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+            padding: 10px 26px;
             text-decoration: none;
-            font-weight: 600;
-            margin-top: 15px;
-            transition: opacity 0.2s;
+            font-weight: 700;
+            margin-top: 10px;
         }
-        .discord-link:hover { opacity: 0.9; }
-
+        .discord-link:hover {
+            background: var(--accent);
+            color: #1a1a1a;
+        }
 
         .script-wrapper {
             position: relative;
-            margin-top: 20px;
+            margin-top: 15px;
             border: 1px solid var(--border-color);
-            border-radius: 8px;
-            background-color: #050505;
+            background-color: #121110;
         }
 
         .copy-btn {
             position: absolute;
-            top: 10px;
-            right: 10px;
-            background: #222;
-            border: 1px solid #444;
-            color: #aaa;
-            padding: 6px 12px;
-            border-radius: 6px;
+            top: 8px;
+            right: 25px;
+            background: var(--paper);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 5px 12px;
             cursor: pointer;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Courier Prime', monospace;
             font-size: 0.8em;
-            font-weight: 600;
-            transition: all 0.2s;
+            font-weight: 700;
         }
         .copy-btn:hover {
-            background: #333;
-            color: #fff;
+            background: var(--accent);
+            color: #1a1a1a;
         }
 
         .script-box {
-            padding: 20px;
+            padding: 18px;
             overflow-x: auto;
             max-height: 400px;
             overflow-y: auto;
@@ -291,23 +313,26 @@
 
         pre {
             margin: 0;
-            color: #abb2bf;
-            font-size: 0.85em;
-            font-family: 'Roboto Mono', monospace;
+            color: #fffff;
+            font-size: 1em;
+            font-family: 'Courier Prime', monospace;
         }
 
         @media (max-width: 768px) {
-            .ranking-header { display: none; }
-            .ranking-row {
-                grid-template-columns: 1fr;
-                gap: 15px;
+            table.ranking-table thead {
+                display: none;
             }
-            .obf-info { order: 1; }
-            .time-container { order: 2; }
-            .expand-btn { 
-                order: 3;
-                margin-left: 0;
+            table.ranking-table, table.ranking-table tbody, table.ranking-table tr, table.ranking-table td {
+                display: block;
                 width: 100%;
+            }
+            table.ranking-table tr.ranking-row {
+                border-bottom: 2px solid var(--border-color);
+                padding: 10px 0;
+            }
+            table.ranking-table td {
+                border-bottom: none;
+                padding: 6px 14px;
             }
         }
     </style>
@@ -316,31 +341,34 @@
 
 <div class="container">
     <header>
-        <h1>Lua Benchmark Ranking</h1>
+        <h1>Official Prometheus Benchmark</h1>
         <div class="subtitle">Performance comparison based on Prometheus Benchmark, run on AMD Ryzen 5 9600X 6-Core Processor (3.90 GHz)</div>
     </header>
 
-    <div class="ranking-container">
-        <div class="ranking-header">
-            <div>#</div>
-            <div>Obfuscator</div>
-            <div>Total Time</div>
-            <div style="text-align: center;">Info</div>
-        </div>
-        <div id="ranking-body">
-        </div>
-    </div>
+    <table class="ranking-table">
+        <caption>Ranked by total execution time (ascending)</caption>
+        <thead>
+            <tr>
+                <th style="width:40px;">#</th>
+                <th>Obfuscator</th>
+                <th style="width:170px;">Total Time</th>
+                <th style="width:60px; text-align:center;">Info</th>
+            </tr>
+        </thead>
+        <tbody id="ranking-body">
+        </tbody>
+    </table>
 
     <footer>
         <div class="discord-card">
             <h3>Submit your Obfuscator</h3>
-            <p style="color: #888; margin-bottom: 0;">Ping me on Discord to add your result to the leaderboard.</p>
+            <p style="color: #999; margin-bottom: 0;">Ping me on Discord to add your result to the leaderboard.</p>
             <a href="https://dsc.gg/obfuscation" target="_blank" class="discord-link">Join Discord</a>
         </div>
 
         <h3>Benchmark Script</h3>
-        <p style="color: #888; font-size: 0.9em;">Run this script on your environment and submit the output.</p>
-        
+        <p style="color: #999; font-size: 0.9em;">Obfuscate this script with your obfuscator and submit the obfuscated output.</p>
+
         <div class="script-wrapper">
             <button class="copy-btn" onclick="copyScript()">Copy</button>
             <div class="script-box">
@@ -475,12 +503,9 @@ print(pad("total", name_w) .. "  " .. pad("", iter_w) .. "  " .. string.format("
 </div>
 
 <script>
-  
-   
 
     const results = [
         {
-          
             name: "Buluark V2.1",
             logo: "resources/buluark.png",
             link: "https://dsc.gg/obfuscation",
@@ -496,7 +521,6 @@ print(pad("total", name_w) .. "  " .. pad("", iter_w) .. "  " .. string.format("
             }
         },
         {
-           
             name: "Wynfuscate",
             logo: "resources/wynfuscate.png",
             link: "https://wynfuscate.com",
@@ -512,7 +536,6 @@ print(pad("total", name_w) .. "  " .. pad("", iter_w) .. "  " .. string.format("
             }
         },
         {
-           
             name: "Lightray",
             logo: "resources/lightray.png",
             link: "https://discord.gg/J7MTtqrEw2",
@@ -528,7 +551,6 @@ print(pad("total", name_w) .. "  " .. pad("", iter_w) .. "  " .. string.format("
             }
         },
         {
-           
             name: "IronBrew 1",
             logo: "resources/ironbrew1.png",
             link: "https://ironbrew1.com",
@@ -544,7 +566,6 @@ print(pad("total", name_w) .. "  " .. pad("", iter_w) .. "  " .. string.format("
             }
         },
         {
-           
             name: "Lucine Unreleased",
             logo: "resources/lucine.png",
             link: "https://discord.gg/rYxC3wAk",
@@ -560,7 +581,6 @@ print(pad("total", name_w) .. "  " .. pad("", iter_w) .. "  " .. string.format("
             }
         },
         {
-           
             name: "Goofyscator V5",
             logo: "resources/goofy.png",
             link: "https://goofyscator.lua.cz",
@@ -576,7 +596,6 @@ print(pad("total", name_w) .. "  " .. pad("", iter_w) .. "  " .. string.format("
             }
         },
         {
-           
             name: "Goofyscator V7.1 BETA",
             logo: "resources/goofy.png",
             link: "https://goofyscator.lua.cz",
@@ -592,10 +611,9 @@ print(pad("total", name_w) .. "  " .. pad("", iter_w) .. "  " .. string.format("
             }
         },
         {
-           
             name: "LPS V2",
             logo: "resources/LPS.png",
-            link: "", //mb sorry LPS
+            link: "",
             totalTime: 0.003,
             details: {
                 "arithmetic loop": 0.0005,
@@ -613,40 +631,40 @@ print(pad("total", name_w) .. "  " .. pad("", iter_w) .. "  " .. string.format("
 
     const maxTimeRef = Math.max(...results.map(r => r.totalTime));
 
-
     const tableBody = document.getElementById('ranking-body');
 
-   results.forEach((item, index) => {
-    const rank = index + 1;
-
+    results.forEach((item, index) => {
+        const rank = index + 1;
         let barWidth = Math.min((item.totalTime / maxTimeRef) * 100, 100);
+        const initial = item.name.trim().charAt(0).toUpperCase();
 
-
-        const row = document.createElement('div');
+        const row = document.createElement('tr');
         row.className = 'ranking-row';
-        
-        let rankClass = '';
-        if (rank === 1) rankClass = 'rank-1';
-        else if (rank === 2) rankClass = 'rank-2';
-        else if (rank === 3) rankClass = 'rank-3';
 
         row.innerHTML = `
-            <div class="rank ${rankClass}">${rank}</div>
-            <div class="obf-info">
-                <img src="${item.logo}" alt="${item.name}" class="obf-logo" onerror="this.src='https://via.placeholder.com/36/111/444?text=Logo'">
-                <a href="${item.link}" target="_blank" class="obf-name">${item.name}</a>
-            </div>
-            <div class="time-container">
+            <td class="rank">${rank}</td>
+            <td>
+                <div class="obf-info">
+                    <img src="${item.logo}" alt="${item.name}" class="obf-logo"
+                         onerror="this.outerHTML='<div class=\\'obf-logo-fallback\\'>${initial}</div>'">
+                    <a href="${item.link}" target="_blank" class="obf-name">${item.name}</a>
+                </div>
+            </td>
+            <td>
                 <span class="time-value">${item.totalTime.toFixed(3)}s</span>
                 <div class="perf-bar-container">
                     <div class="perf-bar" style="width: ${barWidth}%"></div>
                 </div>
-            </div>
-            <div style="text-align: center;">
+            </td>
+            <td style="text-align: center;">
                 <button class="expand-btn" onclick="toggleDetails(${index})">+</button>
-            </div>
+            </td>
         `;
 
+        const detailsRow = document.createElement('tr');
+        detailsRow.className = 'details-row';
+        const detailsCell = document.createElement('td');
+        detailsCell.colSpan = 4;
 
         const detailsPanel = document.createElement('div');
         detailsPanel.className = 'details-panel';
@@ -668,14 +686,18 @@ print(pad("total", name_w) .. "  " .. pad("", iter_w) .. "  " .. string.format("
             detailsPanel.innerHTML = '<div class="no-details">Detailed breakdown not available for this entry yet.</div>';
         }
 
+        detailsCell.appendChild(detailsPanel);
+        detailsRow.appendChild(detailsCell);
+
         tableBody.appendChild(row);
-        tableBody.appendChild(detailsPanel);
+        tableBody.appendChild(detailsRow);
     });
 
     function toggleDetails(index) {
         const panel = document.getElementById(`details-${index}`);
-        const btn = panel.previousElementSibling.querySelector('.expand-btn');
-        
+        const row = panel.closest('tr').previousElementSibling;
+        const btn = row.querySelector('.expand-btn');
+
         if (panel.classList.contains('active')) {
             panel.classList.remove('active');
             btn.classList.remove('active');
@@ -683,7 +705,7 @@ print(pad("total", name_w) .. "  " .. pad("", iter_w) .. "  " .. string.format("
         } else {
             panel.classList.add('active');
             btn.classList.add('active');
-            btn.innerHTML = '×'; // X
+            btn.innerHTML = '&minus;';
         }
     }
 
@@ -693,12 +715,8 @@ print(pad("total", name_w) .. "  " .. pad("", iter_w) .. "  " .. string.format("
             const btn = document.querySelector('.copy-btn');
             const originalText = btn.innerText;
             btn.innerText = "Copied!";
-            btn.style.color = "#fff";
-            btn.style.borderColor = "#fff";
             setTimeout(() => {
                 btn.innerText = originalText;
-                btn.style.color = "#aaa";
-                btn.style.borderColor = "#444";
             }, 2000);
         });
     }

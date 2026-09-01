@@ -608,6 +608,22 @@ print(pad("total", name_w) .. "  " .. pad("", iter_w) .. "  " .. string.format("
                 "metatable index": 0.212
             }
         },
+        {
+           
+            name: "LPS",
+            logo: "resources/LPS.png",
+            link: "",
+            totalTime: 0.003,
+            details: {
+                "arithmetic loop": 0.0005,
+                "function calls": 0.0004,
+                "table create/insert": 0.0004,
+                "table iteration": 0.0005,
+                "string concat": 0.0004,
+                "closure creation": 0.0005,
+                "metatable index": 0.0003
+            }
+        },
     ];
 
     results.sort((a, b) => a.totalTime - b.totalTime);

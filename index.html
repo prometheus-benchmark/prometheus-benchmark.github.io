@@ -625,6 +625,21 @@ print(pad("total", name_w) .. "  " .. pad("", iter_w) .. "  " .. string.format("
                 "metatable index": 0.0003
             }
         },
+        {
+            name: "Luaq",
+            logo: "resources/luaq.png",
+            link: "https://obfuscator.cfd/",
+            totalTime: 0.931,
+            details: {
+                "arithmetic loop": 0.025,
+                "function calls": 0.015,
+                "table create/insert": 0.067,
+                "table iteration": 0.301,
+                "string concat": 0.297,
+                "closure creation": 0.213,
+                "metatable index": 0.010
+            }
+        },
     ];
 
     results.sort((a, b) => a.totalTime - b.totalTime);

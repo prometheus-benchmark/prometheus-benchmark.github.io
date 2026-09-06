@@ -675,8 +675,7 @@ print(pad("total", name_w) .. "  " .. pad("", iter_w) .. "  " .. string.format("
             <td class="rank">${rank}</td>
             <td>
                 <div class="obf-info">
-                    <img src="${item.logo}" alt="${item.name}" class="obf-logo"
-                         onerror="this.outerHTML='<div class=\\'obf-logo-fallback\\'>${initial}</div>'">
+                    <img src="${item.logo}" alt="${item.name}" class="obf-logo">
                     <a href="${item.link}" target="_blank" class="obf-name">${item.name}</a>
                 </div>
             </td>
@@ -690,6 +689,11 @@ print(pad("total", name_w) .. "  " .. pad("", iter_w) .. "  " .. string.format("
                 <button class="expand-btn" onclick="toggleDetails(${index})">+</button>
             </td>
         `;
+
+        const img = row.querySelector('.obf-logo');
+        img.onerror = function() {
+            this.outerHTML = `<div class="obf-logo-fallback">${initial}</div>`;
+        };
 
         const detailsRow = document.createElement('tr');
         detailsRow.className = 'details-row';

@@ -638,8 +638,9 @@ print(pad("total", name_w) .. "  " .. pad("", iter_w) .. "  " .. string.format("
                 "string concat": 0.297,
                 "closure creation": 0.213,
                 "metatable index": 0.010
-            },
-            {
+            }
+        },
+        {
             name: "Luraph V15",
             logo: "resources/lph.png",
             link: "https://lura.ph",
@@ -653,7 +654,7 @@ print(pad("total", name_w) .. "  " .. pad("", iter_w) .. "  " .. string.format("
                 "closure creation": 0.593,
                 "metatable index": 0.052
             }
-        },
+        }
     ];
 
     results.sort((a, b) => a.totalTime - b.totalTime);
